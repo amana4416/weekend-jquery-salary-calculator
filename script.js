@@ -4,8 +4,9 @@ let employees = [];
 
 function onReady() {
     //test to see if function is working
-    console.log('jquery is working!')
-    $('#addNewEmployeesButton').on('click', addNewEmployee)
+    console.log('jquery is working!');
+    $('#addNewEmployeesButton').on('click', addNewEmployee);
+    $('body').on('click', '.deleteEmployeeButton', deleteEmployee);
 
 }
 
@@ -25,16 +26,16 @@ function addNewEmployee() {
     let newEmployee = {
         firstName: newFirstName,
         lastName: newLastName,
-        iD: newID,
+        iD: Number(newID),
         title: newTitle,
-        annualSalary: newAnnualSalary
+        annualSalary: Number(newAnnualSalary)
     }
 
     //add to array
-    employees.push(existingEmployees);
+    employees.push(newEmployee);
 
     //updatte DOM
-    renderEmployees();
+    renderExistingEmployees();
 
     //empyt inputs after hitting submit
     $('#firstNameInput').val('');
@@ -46,20 +47,33 @@ function addNewEmployee() {
 
 
 //function to update the DOM
-function renderEmployees() {
+function renderExistingEmployees() {
     //first empty array
-    //('#existingEmployees').empty();
-    for (let i = 0; i<employees.length; i++) {
+    $('#existingEmployees').empty();
+    for (let i = 0; i < employees.length; i++) {
         if (i === 0) {
             $('#existingEmployees').append(`
-            <tr>
+            <tr id="newEmployees">
               <td>${employees[i].firstName}</td>
               <td>${employees[i].lastName}</td>
               <td>${employees[i].iD}</td>
               <td>${employees[i].title}</td>
               <td>${employees[i].annualSalary}</td>
               <td>
-                  <button class="Delete">Delete</button>
+                  <button class="deleteEmployeeButton">Delete</button>
+              </td>
+           </tr>
+            `)
+        } else {
+            $('#existingEmployees').append(`
+            <tr id="newEmployees">
+              <td>${employees[i].firstName}</td>
+              <td>${employees[i].lastName}</td>
+              <td>${employees[i].iD}</td>
+              <td>${employees[i].title}</td>
+              <td>${employees[i].annualSalary}</td>
+              <td>
+                  <button class="deleteEmployeeButton">Delete</button>
               </td>
            </tr>
             `)
@@ -72,8 +86,9 @@ function deleteEmployee() {
     //test to see if function is working
     console.log('you removed an employee')
 
-    let buttonThatGotClicked = $(this);
-    let employeeToDelete = buttonThatGotClicked.parent();
-    employeeToDelete.remove();
+    // let buttonThatGotClicked = $(this);
+    // let employeeToDelete = buttonThatGotClicked.parent();
+    // employeeToDelete.remove();
 
+    $(this).parent().remove();
 }
