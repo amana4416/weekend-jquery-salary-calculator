@@ -37,6 +37,9 @@ function addNewEmployee() {
     //updatte DOM
     renderExistingEmployees();
 
+    //calculate how much each employee is paid out each month
+    calculateMonthlyTotal();
+
     //empyt inputs after hitting submit
     $('#firstNameInput').val('');
     $('#lastNameInput').val('');
@@ -81,6 +84,7 @@ function renderExistingEmployees() {
     }   
 }
 
+
 //function to remove an employee from the table
 function deleteEmployee() {
     //test to see if function is working
@@ -90,3 +94,28 @@ function deleteEmployee() {
     let employeeToDelete = buttonThatGotClicked.parent().parent();
     employeeToDelete.remove();
 }
+
+
+//function
+function calculateMonthlyTotal() {  
+    //calculating what each employee needs to be paid each month 
+    //ie annual sallary / 12
+    let employeeMonthlySalary = 0;
+    for (let i = 0; i < employees.length; i++) {
+        employeeMonthlySalary += Number(employees[i].annualSalary);
+    }
+   
+    let employeePaid = Math.round(employeeMonthlySalary/12);
+
+    let month = ('$' + employeePaid);
+
+    $('#monthlyTotal').text(`Total Monthly: ${month}`);
+
+    renderExistingEmployees();
+}
+
+
+
+
+
+
