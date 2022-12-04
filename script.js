@@ -86,9 +86,7 @@ function deleteEmployee() {
     //test to see if function is working
     console.log('you removed an employee')
 
-    // let buttonThatGotClicked = $(this);
-    // let employeeToDelete = buttonThatGotClicked.parent();
-    // employeeToDelete.remove();
-
-    $(this).parent().remove();
+    let buttonThatGotClicked = $(this);
+    let employeeToDelete = buttonThatGotClicked.parent().parent();
+    employeeToDelete.remove();
 }
