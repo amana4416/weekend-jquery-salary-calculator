@@ -91,7 +91,7 @@ function deleteEmployee() {
     //test to see if function is working
     console.log('you removed an employee')
 
-    $(this).parent().parent();
+    $(this).parent().parent().remove();
 }
 
 
