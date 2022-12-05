@@ -1,0 +1,73 @@
+.overBudget {
+    color: red;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; 
+    background-color: #BCBDC0;
+    color: #734B5E;
+}
+
+h1,
+h2 {
+  font-family: 'Fraunces', serif;
+}
+
+#header {
+    top: 0%;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+header h1 {
+  font-size: 48px;
+  text-align: center;
+}
+
+
+h2 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+input {
+    height: 20px;
+    font-size: 20px;
+}
+
+#addNewEmployeesButton {
+    color: #734B5E;
+    background-color: #8A8D91;
+    height: 25px;
+}
+
+#tableTitle {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+table, td, th {  
+    border: 2px solid #734B5E;
+    text-align: left;
+}
+  
+th, td {
+    padding: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.deleteEmployeeButton {
+    color: #734B5E;
+    background-color: #8A8D91;
+    height: 25px;
+}
+  
+footer{
+    bottom: 0%;
+    position: fixed;
+  }
+

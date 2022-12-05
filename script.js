@@ -40,7 +40,7 @@ function addNewEmployee() {
     //calculate how much each employee is paid out each month
     calculateMonthlyTotal();
 
-    //empyt inputs after hitting submit
+    //empty input boxes after hitting submit
     $('#firstNameInput').val('');
     $('#lastNameInput').val('');
     $('#iDInput').val('');
@@ -53,6 +53,7 @@ function addNewEmployee() {
 function renderExistingEmployees() {
     //first empty array
     $('#existingEmployees').empty();
+
     for (let i = 0; i < employees.length; i++) {
         if (i === 0) {
             $('#existingEmployees').append(`
@@ -90,27 +91,29 @@ function deleteEmployee() {
     //test to see if function is working
     console.log('you removed an employee')
 
-    let buttonThatGotClicked = $(this);
-    let employeeToDelete = buttonThatGotClicked.parent().parent();
-    employeeToDelete.remove();
+    $(this).parent().parent();
 }
 
 
-//function
+//function to calculate money paid out each month
 function calculateMonthlyTotal() {  
     //calculating what each employee needs to be paid each month 
     //ie annual sallary / 12
-    let employeeMonthlySalary = 0;
+    let employeeMonthlySalary = 0
     for (let i = 0; i < employees.length; i++) {
-        employeeMonthlySalary += Number(employees[i].annualSalary);
+       employeeMonthlySalary += Number(employees[i].annualSalary);
     }
-   
-    let employeePaid = Math.round(employeeMonthlySalary/12);
-
-    let month = ('$' + employeePaid);
-
+     
+    let employeesPaid = Math.round(employeeMonthlySalary/12);
+    let month = ('$' + employeesPaid);
     $('#monthlyTotal').text(`Total Monthly: ${month}`);
-
+   
+    //turn monthly total red if you go over budget of 20000
+    if (employeesPaid >= 20000) {
+       $('#budget').addClass('overBudget');
+    } else { 
+       $('#budget').removeClass('overBudget');
+    }
     renderExistingEmployees();
 }
 
